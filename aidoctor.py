@@ -17,7 +17,7 @@ application = app
 auth_key=os.getenv("AUTH_KEY")
 model_name=os.getenv("MODEL_NAME")
 context=os.getenv("PROMPT")
-
+url=os.getenv("URL")
 
 headers = {
     'Content-Type': 'application/json',
@@ -50,7 +50,7 @@ def get_prompt():
         },
     ],
 }
-    response = requests.post('https://api.openai.com/v1/chat/completions', headers=headers, json=json_data)
+    response = requests.post(url, headers=headers, json=json_data)
     
     response=response.json()
     response=response["choices"][0]["message"]["content"]
